@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"dreezr.locations"},{"v":2,"key":{"coords":"2dsphere"},"name":"coords_2dsphere","ns":"dreezr.locations","background":true,"2dsphereIndexVersion":3}],"uuid":"15d19c4ef2fb4658861cfdd9396af2a5"}
