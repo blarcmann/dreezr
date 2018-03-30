@@ -1,11 +1,5 @@
 var mongoose = require('mongoose');
 
-var reviewSchema = new mongoose.Schema({
-    author: String,
-    rating: { type: Number, required: true, min: 0, max: 5 },
-    reviewText: String,
-    createdOn: { type: Date, "default": Date.now }
-});
 
 var openingTimeSchema = new mongoose.Schema({
     days: { type: String, required: true },
@@ -13,6 +7,15 @@ var openingTimeSchema = new mongoose.Schema({
     closing: String,
     closed: { type: Boolean, required: true }
 });
+
+
+var reviewSchema = new mongoose.Schema({
+    author: { type: String, required: true },
+    rating: { type: Number, required: true, min: 0, max: 5 },
+    reviewText: { type: String, required: true },
+    createdOn: { type: Date, "default": Date.now }
+});
+
 
 var locationSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -27,4 +30,4 @@ var locationSchema = new mongoose.Schema({
 mongoose.model('Location', locationSchema);
 
 
-// mongorestore -h ds111059.mlab.com:11059 -d locations -u yemiodetola -p 121dtl121ois ~/tmp/mongodump/dreezr
+// mongorestore -h ds111059.mlab.com:11059 -d locations -u yemiodetola -p *********** ~/tmp/mongodump/dreezr

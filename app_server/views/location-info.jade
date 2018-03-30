@@ -11,51 +11,47 @@ block content
             .row
                 .col-xs-12.col-sm-6
                     p.rating
-                        +outputRating(location.ratinf)
+                        +outputRating(location.rating)
                     p= location.address
-                    .panel.panel-primary
-                        .panel-heading
-                            h2.panel-title Opening hours
-                        .panel-body
-                           each time in location.openingTimes
-                            p
-                                | #{time.days} :
-                                if time.closed
-                                    | closed
-                                else
-                                    | #{time.opening} - #{time.closing}
-                    .panel.panel-primary
-                        .panel-heading
-                            h2.panel-title Facilities
-                        .panel-body
+                    .card.card-primary
+                        .card-block
+                            h2.card-title Opening hours
+                            each time in location.openingTimes
+                                p.card-text
+                                    | #{time.days} :
+                                    if time.closed
+                                        | closed
+                                    else
+                                    |   #{time.opening} - #{time.closing}
+                    .card.card-primary
+                        .card-block
+                            h2.card-title Facilities
                             each facility in location.facilities
-                                span.label.label-warning
-                                    span.glyphicon.glyphicon-ok
+                                span.badge.badge-warning
+                                    i.fa.fa-check
                                     | &nbsp;#{facility}
                                 | &nbsp;
                 .col-xs-12.col-sm-6.location-map
-                    .panel.panel-primary
-                        .panel-heading
-                            h2.panel-title Location map
-                        .panel-body
-                            img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2')
+                    .card.card-primary
+                        .card-block
+                            h2.card-title Location map
+                            img.img-responsive.img-rounded(src="http://maps.googleapis.com/maps/api/staticmap?center=#{location.coords.lat},#{location.coords.lng}&zoom=17&size=400x350&sensor=false&markers=#{location.coords.lat},#{location.coords.lng}&scale=2")
             .row
                 .col-xs-12
-                    .panel.panel-primary.review-panel
-                        .panel-heading
-                            a.btn.btn-default.pull-right(href='/location/review/new') Add review
-                            h2.panel-title Customer reviews
-                        .panel-body.review-container
+                    .card.card-primary.review-card
+                        .card-block
+                            a.btn.btn-default.pull-right(href="/location/#{location._id}/reviews/new") Add review
+                            h2.card-title Customer reviews
                             each review in location.reviews
-                                .row
-                                    .review
-                                        .well.well-sm.review-header
-                                            span.rating
-                                                +outputRating(review.rating)
-                                            span.reviewAuthor #{review.rating}
-                                            small.reviewTimestamp #{review.author}
-                                        .col-xs-12
-                                            p !{(review.reviewText).replace(/\n/g, '<br/>')}
+                                .row.review
+                                    .col-12.no-gutters.review-header
+                                        span.rating
+                                            +outputRating(review.rating)
+                                        span.reviewAuthor #{review.author}
+                                        small.reviewTimestamp 
+                                            +formatDate(review.createdOn)
+                                    .col-xs-12
+                                        p !{(review.reviewText).replace(/\n/g, '<br/>')}
         .col-xs-12.col-md-3
             p.lead #{location.name} #{sidebar.context}
             p= sidebar.callToAction
