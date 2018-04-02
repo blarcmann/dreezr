@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+mongoose.plugin(schema => { schema.options.usePushEach = true });
 
 
 var openingTimeSchema = new mongoose.Schema({
@@ -14,7 +15,8 @@ var reviewSchema = new mongoose.Schema({
     rating: { type: Number, required: true, min: 0, max: 5 },
     reviewText: { type: String, required: true },
     createdOn: { type: Date, "default": Date.now }
-});
+}
+);
 
 
 var locationSchema = new mongoose.Schema({

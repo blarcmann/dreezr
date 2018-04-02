@@ -11,35 +11,6 @@ module.exports.homelist = function (req, res) {
     renderHomepage(req, res);
 };
 
-// module.exports.homelist = function (req, res) {
-//     var requestOptions, path;
-//     path = '/api/locations';
-//     requestOptions = {
-//         url: apiOptions.server + path,
-//         method: "GET",
-//         json: {},
-//         qs: {
-//             lng: 7.912795,
-//             lat: 5.037740,
-//             maxDistance: 200000
-//         }
-//     };
-//     request(
-//         requestOptions,
-//         function (err, response, body) {
-//             var i, data;
-//             data = body;
-//             if (response.statusCode === 200 && data.length) {
-//                 for (i = 0; i < data.length; i++) {
-//                     data[i].distance = _formatDistance(data[i].distance);
-//                 }
-//             }
-//             renderHomepage(req, res, data);
-//         }
-//     );
-// };
-
-
 module.exports.locationInfo = function (req, res) {
     getLocationInfo(req, res, function (req, res, responseData) {
         renderDetailPage(req, res, responseData);

@@ -1,17 +1,28 @@
-(function() {
-angular.module('dreezrApp', ['ngRoute']);
+(function () {
+    angular.module('dreezrApp', ['ngRoute','ngAnimate', 'ui.bootstrap', 'ngSanitize']);
 
-function config($routeProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: 'home/home.view.html',
-            controller: 'homeCtrl',
-            controllerAs: 'vm'
-        })
-        .otherwise({ redirectTo: '/' });
-}
+    function config($routeProvider, $locationProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'home/home.view.html',
+                controller: 'homeCtrl',
+                controllerAs: 'vm'
+            })
+            .when('/about', {
+                templateUrl: '/common/views/genericText.view.html',
+                controller: 'aboutCtrl',
+                controllerAs: 'vm'
+            })
+            .when('/location/:locationid', {
+                templateUrl: '/locationDetail/locationDetail.view.html',
+                controller: 'locationDetailCtrl',
+                controllerAs: 'vm'
+            })
+            .otherwise({ redirectTo: '/' });
+        $locationProvider.html5Mode(true);
+    }
 
-angular
-    .module('dreezrApp')
-    .config(['$routeProvider', config]);
+    angular
+        .module('dreezrApp')
+        .config(['$routeProvider', '$locationProvider', config]);
 })();
