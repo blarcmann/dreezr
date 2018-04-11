@@ -1,36 +1,30 @@
-.review {padding-bottom: 5px;}
-.panel-body.review-container {padding-top: 0;}
-.review-header {margin-bottom: 10px;}
-.reviewAuthor {margin: 0 5px;}
-.reviewTimestamp {color: #ccc;}
-#filter {margin-left: 4px;}
-
 @import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
 
 body {
   font-family: "Cabin", Arial, sans-serif;
   color: #ffffff;
-  background-color: #108a93;
+  padding: 3% 3%;;
+  background-color: #335550;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lobster', cursive;
+  font-family: cursive;
+}
+.headd {
+  margin-left: 20px;
 }
 
 .navbar {
-  background-color: #ad1d28;
-  border-color: #911821;
+  background-color: #043028;
+  border-color: #043028;
+}
+
+.homepad {
+  padding-top: 0 !important;
 }
 
 .navbar-brand {
   font-family: 'Lobster', cursive;
-}
-
-.banner {
-  margin-top: 4em;
-  border-bottom: 1px solid #469ea8;
-  margin-bottom: 1.5em;
-  padding-bottom: 0.5em;
 }
 
 h1 small {
@@ -38,7 +32,7 @@ h1 small {
 }
 
 .card {
-  background-color: #469ea8;
+  background-color: #06352c;
 }
 
 .card-primary {
@@ -47,7 +41,7 @@ h1 small {
 }
 
 .review-header {
-  background-color: #31727a;
+  background-color: #06352c;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;
@@ -65,8 +59,8 @@ h1 small {
 }
 
 .badge-default, .btn-primary {
-  background-color: #ad1d28;
-  border-color: #911821;
+  background-color: #043028;
+  border-color: #06352c;
 }
 
 h4 a, h4 a:hover {
@@ -89,4 +83,35 @@ h4 small {
 
 legend {
   font-family: 'Lobster', cursive;
+}
+
+.review {
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+}
+
+.panel-body.review-container {
+  padding-top: 0;
+}
+
+.review-header {
+  margin-bottom: 10px;
+}
+
+.reviewAuthor {
+  margin: 0 5px;
+}
+
+.reviewTimestamp {
+  color: #ccc;
+}
+
+#filter {
+  margin-left: 10px;
+  margin-bottom: 15px;
+  border: 0 !important;
+  padding: 1% 0;
+  width: 71%;
 }

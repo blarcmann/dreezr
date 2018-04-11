@@ -1,23 +1,12 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
 var dbURI = 'mongodb://localhost/dreezr';
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGOLAB_URI;
 }
 mongoose.connect(dbURI);
-
-// var readLine = require("readline");
-// if (process.platform === "win32") {
-//     var rl = readLine.createInterface({
-//         input: process.stdin,
-//         output: process.stdout
-//     });
-//     rl.on("SIGINT", function () {
-//         process.emit("SIGINT");
-//     });
-// }
 
 mongoose.connection.on('connected', function () {
     console.log('Mongoose connected to ' + dbURI);
@@ -58,3 +47,4 @@ process.on('SIGTERM', function () {
 });
 
 require('./locations');
+require('./users');

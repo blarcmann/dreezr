@@ -2,10 +2,16 @@
     angular
         .module('dreezrApp')
         .controller('locationDetailCtrl', locationDetailCtrl);
-    locationDetailCtrl.$inject = ['$routeParams', '$uibModal', 'dreezrData', '$location'];
-    function locationDetailCtrl($routeParams, $uibModal, dreezrData, $location) {
+
+    locationDetailCtrl.$inject = ['$routeParams', '$uibModal', 'authentication', 'dreezrData', '$location'];
+    function locationDetailCtrl($routeParams, $uibModal, authentication, dreezrData, $location) {
         var vm = this;
         vm.locationid = $routeParams.locationid;
+
+        vm.isLoggedIn = authentication.isLoggedIn();
+
+        vm.currentPath = $location.path();
+        
         dreezrData.locationById(vm.locationid)
             .success(function (data) {
                 vm.data = { location: data };
