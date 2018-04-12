@@ -22,6 +22,8 @@
             .error(function (e) {
                 console.log(e);
             });
+
+            
         vm.popupReviewForm = function () {
             var modalInstance = $uibModal.open({
                 templateUrl: '/reviewModal/reviewModal.view.html',
@@ -36,8 +38,8 @@
                 }
             });
             modalInstance.result.then(function (data) {
-                vm.data.location.reviews.push(data.data);
-                // vm.data.location.reviews.set(data);
+                // vm.data.location.reviews.push(data.data);
+                vm.data.location.reviews.set(data);
             });
         };
     }

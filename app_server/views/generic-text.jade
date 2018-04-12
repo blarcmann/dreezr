@@ -1,9 +1,10 @@
 extends layout
 
 block content
-  .row.banner
-    .col-12
-      h1= title
+  #banner.page-header
+    .row
+      .col-md-6.col-sm-12
+        h1= title
   .row
-    .col-12.col-lg-8
+    .col-md-6.col-sm-12
       p !{(content).replace(/\n/g, '<br/>')}

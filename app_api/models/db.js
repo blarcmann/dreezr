@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
 var dbURI = 'mongodb://localhost/dreezr';
-// mongoose.Promise = global.Promise;
 
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGOLAB_URI;
 }
+
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {
@@ -25,26 +25,26 @@ var gracefulShutdown = function (msg, callback) {
     });
 };
 
-// For nodemon restarts
-process.once('SIGUSR2', function () {
+process.once('SIGURS2', function () {
     gracefulShutdown('nodemon restart', function () {
-        process.kill(process.pid, 'SIGUSR2');
+      process.kill(process.pid, 'SIGURS2');
     });
-});
-
-// For app termination
-process.on('SIGINT', function () {
+  });
+  
+  // for app termination
+  process.once('SIGINT', function () {
     gracefulShutdown('app termination', function () {
-        process.exit(0);
+      process.exit(0);
     });
-});
-
-// For Heroku app termination
-process.on('SIGTERM', function () {
+  });
+  
+  // for heroku app termination
+  process.once('SIGTERM', function () {
     gracefulShutdown('Heroku app shutdown', function () {
-        process.exit(0);
+      process.exit(0);
     });
-});
-
-require('./locations');
-require('./users');
+  });
+  
+  
+  require('./locations');
+  require('./users');

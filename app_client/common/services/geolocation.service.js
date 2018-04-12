@@ -1,20 +1,22 @@
-(function() {
-angular
-    .module('dreezrApp')
-    .service('geolocation', geolocation);
+(function () {
 
-
-function geolocation() {
-    var getPosition = function (cbSuccess, cbError, cbNoGeo) {
+    angular
+      .module('dreezrApp')
+      .service('geolocation', geolocation);
+  
+    function geolocation () {
+      var getPosition = function (cbSuccess, cbError, cbNoGeo) {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(cbSuccess, cbError);
+          navigator.geolocation.getCurrentPosition(cbSuccess, cbError);
         }
         else {
-            cbNoGeo();
+          cbNoGeo();
         }
-    };
-    return {
-        getPosition: getPosition
-    };
-}
-})();
+      };
+      return {
+        getPosition : getPosition
+      };
+    }
+  
+  }) ();
+  

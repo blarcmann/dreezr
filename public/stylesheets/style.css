@@ -14,6 +14,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 20px;
 }
 
+#navbar-main ul li a{
+  color: #81d84e;
+}
+.navbar-header .navbar-brand {
+  color: #bef59e;
+}
+.navbar-header .navbar-brand button span {
+  color: #bef59e;
+}
+
 .navbar {
   background-color: #043028;
   border-color: #043028;
